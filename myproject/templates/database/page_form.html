@@ -1,0 +1,85 @@
+{% extends "base/database_base.html" %}
+{% block body %}
+
+<h2>データベースに記録する</h2>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <!-- フォーム全体のエラーを表示 -->
+    {% if form.non_field_errors %}
+        <div class="error">
+            {% for error in form.non_field_errors %}
+                <p style="color: red;">{{ error }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <h2>名前</h2>
+    <p>
+        {{ form.name.label_tag }} {{ form.name }}
+        {% if form.name.errors %}
+            <span style="color: red;">
+                {% for error in form.name.errors %}
+                    {{ error }}<br>
+                {% endfor %}
+            </span>
+        {% endif %}
+    </p>
+
+    <h2>基礎値</h2>
+    <div>合計600以下になるように入力</div>
+    {% for field in form %}
+        {% if field.name in "toughness_stats power_stats muscle_mass_stats intelligence_stats resistance_stats speed_stats" %}
+            <p>
+                {{ field.label_tag }} {{ field }}
+                {% if field.errors %}
+                    <span style="color: red;">
+                        {% for error in field.errors %}
+                            {{ error }}<br>
+                        {% endfor %}
+                    </span>
+                {% endif %}
+            </p>
+        {% endif %}
+    {% endfor %}
+
+    <h2>才能</h2>
+    <div>0から31までを入力</div>
+    {% for field in form %}
+        {% if field.name in "toughness_sense power_sense muscle_mass_sense intelligence_sense resistance_sense speed_sense" %}
+            <p>
+                {{ field.label_tag }} {{ field }}
+                {% if field.errors %}
+                    <span style="color: red;">
+                        {% for error in field.errors %}
+                            {{ error }}<br>
+                        {% endfor %}
+                    </span>
+                {% endif %}
+            </p>
+        {% endif %}
+    {% endfor %}
+
+    <h2>努力指数</h2>
+    <div>0から252の間 合計510以下になるように入力</div>
+    {% for field in form %}
+        {% if field.name in "toughness_effort_value power_effort_value muscle_mass_effort_value intelligence_effort_value resistance_effort_value speed_effort_value" %}
+            <p>
+                {{ field.label_tag }} {{ field }}
+                {% if field.errors %}
+                    <span style="color: red;">
+                        {% for error in field.errors %}
+                            {{ error }}<br>
+                        {% endfor %}
+                    </span>
+                {% endif %}
+            </p>
+        {% endif %}
+    {% endfor %}
+
+    <button type="submit" class="btn btn-save">保存</button>
+    
+</form>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    {% load static %}
+    <meta charset="utf-8" />
+    <title>パチモンデータベース</title>
+    <link rel="stylesheet" href="{% static 'database/styles.css' %}">
+</head>
+
+<body>
+    <header>
+        <h1><a href="{% url 'database:index' %}">パチモンデータベース</a></h1>
+    </header>
+    {% block body%}
+    {% endblock %}
+
+</body>
+</html>
+

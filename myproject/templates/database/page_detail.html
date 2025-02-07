@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <title>パチモンデータベース</title>
+    <link rel="stylesheet" href="{% static 'database/styles.css' %}">
+</head>
+
+<body>
+    <header>
+        <h1><a href="{% url 'database:index' %}">パチモンデータベース</a></h1>
+    </header>
+
+<h2>{{ page.name }}</h2>
+<div class="updated-at">更新日: {{ page.updated_at }}</div>
+
+<table class="data-table">
+    <thead>
+        <tr>
+            <th>項目</th>
+            <th>実数値</th>
+            <th>基礎値</th>
+            <th>才能</th>
+            <th>努力指数</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>タフネス</td>
+            <td>{{ page.toughness }}</td>
+            <td>{{ page.toughness_stats }}</td>
+            <td>{{ page.toughness_sense }}</td>
+            <td>{{ page.toughness_effort_value }}</td>
+        </tr>
+        <tr>
+            <td>パワー</td>
+            <td>{{ page.power }}</td>
+            <td>{{ page.power_stats }}</td>
+            <td>{{ page.power_sense }}</td>
+            <td>{{ page.power_effort_value }}</td>
+        </tr>
+        <tr>
+            <td>筋肉量</td>
+            <td>{{ page.muscle_mass }}</td>
+            <td>{{ page.muscle_mass_stats }}</td>
+            <td>{{ page.muscle_mass_sense }}</td>
+            <td>{{ page.muscle_mass_effort_value }}</td>
+        </tr>
+        <tr>
+            <td>賢さ</td>
+            <td>{{ page.intelligence }}</td>
+            <td>{{ page.intelligence_stats }}</td>
+            <td>{{ page.intelligence_sense }}</td>
+            <td>{{ page.intelligence_effort_value }}</td>
+        </tr>
+        <tr>
+            <td>耐性</td>
+            <td>{{ page.resistance }}</td>
+            <td>{{ page.resistance_stats }}</td>
+            <td>{{ page.resistance_sense }}</td>
+            <td>{{ page.resistance_effort_value }}</td>
+        </tr>
+        <tr>
+            <td>スピード</td>
+            <td>{{ page.speed }}</td>
+            <td>{{ page.speed_stats }}</td>
+            <td>{{ page.speed_sense }}</td>
+            <td>{{ page.speed_effort_value }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<br>
+
+<div class="action-buttons">
+    <a href="{% url 'database:page_update' page.id %}" class="btn btn-edit">編集</a>
+    <a href="{% url 'database:page_delete' page.id %}" class="btn btn-delete">削除</a>
+</div>
+
+</body>
+</html>
+

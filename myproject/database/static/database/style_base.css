@@ -1,0 +1,38 @@
+/* 全体のスタイル */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7f6;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* 縦方向にレイアウト */
+    justify-content: flex-start; /* 上部に配置 */
+    align-items: center; /* 横方向中央揃え */
+    height: 100vh; /* ビューポートの高さを100%に設定 */
+}
+
+/* ヘッダーのスタイル */
+header {
+    background-color: #007BFF;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 影をつけて浮き立たせる */
+    margin-top: 50px; /* 上部に余白を追加 */
+    width: 100%;
+    max-width: 600px; /* ヘッダーの最大幅 */
+}
+
+/* h1のリンク */
+h1 a {
+    color: grey;
+    text-decoration: none;
+    font-size: 1.5em;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+h1 a:hover {
+    color: #eeff00; /* ホバー時の色を変更 */
+}

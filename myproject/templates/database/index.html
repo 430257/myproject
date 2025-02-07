@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    {% load static %}
+    <meta charset="utf-8" />
+    <title>パチモンデータベース</title>
+    <link rel="stylesheet" href="{% static 'database/styles.css' %}">
+</head>
+
+<body>
+    <header>
+        <h1><a href="{% url 'database:index' %}">パチモンデータベース</a></h1>
+    </header>
+
+    <div class="container">
+        <p class="datetime">{{ datetime_now }}</p>
+    
+        <div class="button-container">
+            <a href="{% url 'database:page_create' %}" class="btn-index btn-index-primary">データベースに追加する</a>
+            <a href="{% url 'database:page_list' %}" class="btn-index btn-index-secondary">データ一覧</a>
+        </div>
+    
+        <form action="{% url 'accounts:logout' %}" method="post" class="logout-form">
+            {% csrf_token %}
+            <button type="submit" class="btn-index btn-index-danger">ログアウト</button>
+        </form>
+        
+    </div>
+</body>
+</html>

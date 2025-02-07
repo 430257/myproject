@@ -1,0 +1,14 @@
+{% extends "base/database_base.html" %}
+{% block body %}
+
+<h2>新規アカウント登録</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">登録</button>
+</form>
+
+<p>すでにアカウントをお持ちですか？ <a href="{% url 'accounts:login' %}">ログイン</a></p>
+
+{% endblock %}

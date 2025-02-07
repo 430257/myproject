@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <title>パチモンデータベース</title>
+    <link rel="stylesheet" href="{% static 'database/styles.css' %}">
+</head>
+
+<body>
+    <header>
+        <h1><a href="{% url 'database:index' %}">パチモンデータベース</a></h1>
+    </header>
+    <h2>データ一覧</h2>
+
+    {% if page_list %}
+        <table class="data-table">
+            <thead>
+                <tr>
+                    {% for column, label in columns.items %}
+                        {% if sort == column %}
+                            {% if order == "asc" %}
+                                <th><a href="?sort={{ column }}&order=desc">{{ label }} ▼</a></th>
+                            {% else %}
+                                <th><a href="?sort={{ column }}&order=asc">{{ label }} ▲</a></th>
+                            {% endif %}
+                        {% else %}
+                            <th><a href="?sort={{ column }}&order=asc">{{ label }}</a></th>
+                        {% endif %}
+                    {% endfor %}
+                    <th>詳細</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for page in page_list %}
+                    <tr>
+                        <td>{{ page.updated_at }}</td>
+                        <td>{{ page.name }}</td>
+                        <td>{{ page.toughness }}</td>
+                        <td>{{ page.power }}</td>
+                        <td>{{ page.muscle_mass }}</td>
+                        <td>{{ page.intelligence }}</td>
+                        <td>{{ page.resistance }}</td>
+                        <td>{{ page.speed }}</td>
+                        <td><a href="{% url 'database:page_detail' page.id %}" class="detail-link">詳細</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <div class="no-data">データが1つもありません。</div>
+    {% endif %}
+
+</body>
+
+</html>
